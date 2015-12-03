@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) +  "slack_it/version"
+require File.dirname(__FILE__) +  "/slack_it/version"
 require File.dirname(__FILE__) +  "/slack_it/cli"
 require File.dirname(__FILE__) +  "/slack_it/setup"
 require 'net/http'

@@ -6,3 +6,4 @@ gemspec
 gem 'envyable'
 gem 'json'
 gem 'rspec'
+gem 'thor'

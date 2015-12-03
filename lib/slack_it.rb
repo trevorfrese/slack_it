@@ -1,6 +1,6 @@
 # require "slack_it/version"
 require "invoke_call/version"
-require File.dirname(__FILE__) +  "/slack_it/cli"e 
+require File.dirname(__FILE__) +  "/slack_it/cli" 
 require 'net/http'
 require 'envyable'
 require 'json'
@@ -42,7 +42,6 @@ module SlackIt
 
   puts accept_api_token_from_cli
   Envyable.load('config/env.yml', 'slack')
-  SLACK_API_TOKEN = ENV['API_TOKEN']
 
   def send_message(message, channel,as_user=nil)
     url = URI.parse("https://slack.com/api/chat.postMessage?token=#{SLACK_API_TOKEN}&channel=#{channel}&text=#{message}&as_user=#{as_user}&pretty=1")
@@ -53,6 +52,4 @@ module SlackIt
     }
     return JSON.parse(response.body)['ok']
   end
-
-  puts send_message("testing", "%23testing_slack_it", "")
 end

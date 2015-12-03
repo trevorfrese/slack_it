@@ -1,6 +1,6 @@
 # require "slack_it/version"
 require "invoke_call/version"
-require File.dirname(__FILE__) +  "/slack_it/cli"e 
+require File.dirname(__FILE__) +  "/slack_it/cli" 
 require 'net/http'
 require 'envyable'
 require 'json'

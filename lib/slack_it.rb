@@ -1,4 +1,4 @@
-# require "slack_it/version"
+require "slack_it/version"
 require 'net/http'
 require 'envyable'
 require 'json'
@@ -36,7 +36,8 @@ def accept_api_token_from_cli
   return "You entered a successful API token! Now you can send slack messages from your terminal."
 end
 
-puts accept_api_token_from_cli
+#puts accept_api_token_from_cli
+
 Envyable.load('config/env.yml', 'slack')
 SLACK_API_TOKEN = ENV['API_TOKEN']
 
@@ -50,7 +51,7 @@ def send_message(message, channel,as_user=nil)
   return JSON.parse(response.body)['ok']
 end
 
-puts send_message("testing", "%23testing_slack_it", "")
+#puts send_message("testing", "%23testing_slack_it", "")
 
 
 module SlackIt

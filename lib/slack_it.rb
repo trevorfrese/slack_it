@@ -5,7 +5,7 @@ require 'net/http'
 require 'envyable'
 require 'json'
 
-Envyable.load('config/env.yml', 'slack')
+Envyable.load('../config/env.yml', 'slack')
 SLACK_API_TOKEN = ENV['API_TOKEN']
 
 module SlackIt
@@ -58,9 +58,10 @@ module SlackIt
          end
       end
 
-      return messages_list
+      return messages_list.reverse
     else
       return JSON.parse(response.body)['error']
     end
   end
+  Cli.start(ARGV)
 end

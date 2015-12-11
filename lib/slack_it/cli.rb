@@ -4,7 +4,8 @@ module SlackIt
   class Cli < Thor
     desc 'ping', 'send a message'
     option :message, :required => true
-    option :channel, :required => true 
+    option :channel, :required => true
+    option :number_of_messages, :required => true
     
     def ping 
       send_message(options[:message],options[:channel])

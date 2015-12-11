@@ -35,5 +35,15 @@ describe SlackIt do
 
       expect(result).to be true
     end
+
+    it 'should receive messages from a channel' do
+      results = SlackIt::get_messages("C0FJ6D2FR", 5)
+
+      expect(results.length).to be 5
+      results.each do |result|
+        expect(result.keys).to_not be nil
+        expect(result.values).to_not be nil
+      end
+    end
   end
 end

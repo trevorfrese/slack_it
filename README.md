@@ -28,6 +28,13 @@ At this point:
 Use
 
     $ cd lib/
+    $ ruby slack_it.rb setup
+
+to setup the slack_it gem with your API token
+
+Use
+
+    $ cd lib/
     $ ruby slack_it.rb ping --channel=#CHANNEL# --message=#MESSAGE#
 
 to send a message

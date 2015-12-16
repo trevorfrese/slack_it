@@ -2,7 +2,7 @@ require 'thor'
 
 module SlackIt
   class Cli < Thor
-    desc 'ping', 'send a message'
+    desc 'ping', 'send a message to a channel'
     option :message, :required => true
     option :channel, :required => true
     
@@ -10,7 +10,7 @@ module SlackIt
       SlackIt::send_message(options[:message], options[:channel])
     end
 
-    desc 'pong', 'receive a message'
+    desc 'pong', 'receive `n` messages from a channel'
     option :channel, :required => true
     option :number_of_messages, :required => true
     def pong
@@ -19,7 +19,7 @@ module SlackIt
     
     desc 'setup', 'setup your slack account for command line usage'
     def setup
-      setup_config_file
+      puts SlackIt::setup_config_file
     end
   end
 end

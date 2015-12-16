@@ -7,8 +7,8 @@ module SlackIt
   end
 
   def self.create_config_file(api_token)
-    Dir.mkdir("config") unless File.exists?("config")
-    File.open("config/env.yml", "w+") {|f| f.write("slack: \n"); f.write("  API_TOKEN: #{api_token}")}
+    Dir.mkdir("../config") unless File.exists?("../config")
+    File.open("../config/env.yml", "w+") {|f| f.write("slack: \n"); f.write("  API_TOKEN: #{api_token}")}
   end
 
   def self.api_token_valid?(api_token)
@@ -18,6 +18,7 @@ module SlackIt
     response = Net::HTTP.start(url.host, url.port, :use_ssl => url.scheme == 'https') {|http|
       http.request(request)
     }
+
     return JSON.parse(response.body)['ok']
   end
 
@@ -25,7 +26,8 @@ module SlackIt
 
   def self.accept_api_token_from_cli
     puts "Please go to https://api.slack.com/web and issue an API token for your team. Then copy and paste that API token here."
-    api_token_from_cli = gets.chomp
+    api_token_from_cli = STDIN.gets.chomp
+
     if api_token_nil_or_empty?(api_token_from_cli)
       return "Error: API token was empty. Please re-enter it."
     elsif !api_token_valid?(api_token_from_cli)
@@ -33,6 +35,7 @@ module SlackIt
     else
       create_config_file(api_token_from_cli)
     end
+
     return "You entered a successful API token! Now you can send slack messages from your terminal."
   end
 
